@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitung Luas dan Keliling Segitiga</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    }
+    .container {
+    width: 350px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+}
+
+.formula {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.formula img {
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.form {
+    margin-top: 20px;
+}
+
+input[type="number"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: calc(50% - 10px);
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button.reset {
+    background-color: #ff8c00;
+    padding: 10px ;
+    font-size: 12px;
+    justify-content: flex-end;
+    padding-right: 20px;
+   right: 20px;
+    border-radius: 5px;
+    bottom: 20px;
+
+}
+
+button.reset:hover {
+    background-color: #e07b00;
+}
+
+#result {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+</style>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Welcome to Katik</h1>
+            <h5>Halo Sobat, Selamat datang di katik</h5>
+            <h5>Sebuah web apps sederhana yang berfungsi untuk menghitung luas dan keliling bangun datar</h5>
+            <button onclick="location.href='#segitiga'">Segitiga</button>
+            
+        </div>
+        <div id="segitiga" class="content">
+            <div class="section-header">
+                <h2>Luas Segitiga</h2>
+            </div>
+            <div class="formula">
+                <img src="triangle.png" alt="Segitiga">
+                <p>Rumus Luas Segitiga yaitu :</p>
+                <p>L = 1/2 x a x t</p>
+                <p>Di mana :</p>
+                <p>L = Luas</p>
+                <p>a = Panjang Alas</p>
+                <p>t = Tinggi</p>
+            </div>
+            <div class="form">
+                <h3>Hitung Luas Segitiga</h3>
+                <input type="number" id="alas" placeholder="Alas">
+                <input type="number" id="tinggi" placeholder="Tinggi">
+                <button onclick="hitungLuas()">Hitung</button>
+                <p id="result"></p>
+                <button onclick="resetForm()">Reset</button>
+            </div>
+        </div>
+    </div>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h2>Luas Segitiga</h2>
+            </div>
+            <div class="content">
+                <div class="formula">
+                    <img src="triangle.png" alt="Segitiga">
+                    <p>Rumus Luas Segitiga yaitu :</p>
+                    <p>L = 1/2 x a x t</p>
+                    <p>Di mana :</p>
+                    <p>L = Luas</p>
+                    <p>a = Panjang Alas</p>
+                    <p>t = Tinggi</p>
+                </div>
+                <div class="form">
+                    <h3>Hitung Luas Segitiga</h3>
+                    <input type="number" id="alas" placeholder="Nilai Alas">
+                    <input type="number" id="tinggi" placeholder="Nilai Tinggi">
+                    <button id="hitung">Hitung</button>
+                    <p id="output"></p>
+                    <button id="resetButton" class="reset">Reset</button>
+                </div>
+            </div>
+        </div>
+        <body>
+            <div class="container">
+                <div class="header">
+                    <h2>Keliling Segitiga</h2>
+                </div>
+                <div class="content">
+                    <div class="formula">
+                        <img src="triangle.png" alt="Segitiga">
+                        <p>Rumus Keliling Segitiga yaitu :</p>
+                        <p>K = S1 + S2 + S3</p>
+                        <p>Di mana :</p>
+                        <p>K = Keliling</p>
+                        <p>S1 = Sisi A</p>
+                        <p>S2 = Sisi B</p>
+                        <p>S3 = Sisi C</p>
+                    </div>
+                    <div class="form">
+                        <h3>Hitung Keliling Segitiga</h3>
+                        <input type="number" id="s1" placeholder="Sisi A">
+                        <input type="number" id="s2" placeholder="Sisi B">
+                        <input type="number" id="s3" placeholder="Sisi C">
+                        <button onclick="hitungKeliling()">Hitung</button>
+                        <p id="result"></p>
+                        <button onclick="resetForm()">Reset</button>
+                    </div>
+                </div>
+            </div>
+            <script>
+                function hitungLuas() {
+            const alas = parseFloat(document.getElementById('alas').value);
+            const tinggi = parseFloat(document.getElementById('tinggi').value);
+        
+            if (isNaN(alas) || isNaN(tinggi)) {
+                document.getElementById('result').textContent = 'Harap masukkan nilai alas dan tinggi';
+                return;
+            }
+        
+            const luas = 0.5 * alas * tinggi;
+            document.getElementById('result').textContent = `L = 1/2 x ${alas} x ${tinggi}\nL = ${luas}`;
+        }
+        
+        function resetForm() {
+            document.getElementById('alas').value = '';
+            document.getElementById('tinggi').value = '';
+            document.getElementById('result').textContent = '';
+        }
+        
+            </script>
+            <script>
+      
+
+                const alas = document.getElementById('alas')
+                const tinggi = document.getElementById('tinggi')
+                const hitung= document.getElementById('hitung')
+                const output = document.getElementById('output')
+                hitung.addEventListener('click', function(){
+                    let a = alas.value
+                    let t = tinggi.value
+                    let l = 0.5*a*t
+                    output.textContent= `${l}`
+                })
+               
+                
+                resetButton.addEventListener('click', function() {
+                document.getElementById('alas').value = '';
+                document.getElementById('tinggi').value = '';
+                document.getElementById('output').textContent= '';
+               
+                
+                
+        
+            });
+        
+            </script>
+             <script>
+                function hitungKeliling() {
+            const s1 = parseFloat(document.getElementById('s1').value);
+            const s2 = parseFloat(document.getElementById('s2').value);
+            const s3 = parseFloat(document.getElementById('s3').value);
+        
+            if (isNaN(s1) || isNaN(s2) || isNaN(s3)) {
+                document.getElementById('result').textContent = 'Harap masukkan semua sisi';
+                return;
+            }
+        
+            const keliling = s1 + s2 + s3;
+            document.getElementById('result').textContent = `K = S1 + S2 + S3\n K = ${s1} + ${s2} + ${s3}\n K = ${keliling}`;
+        }
+        
+        function resetForm() {
+            document.getElementById('s1').value = '';
+            document.getElementById('s2').value = '';
+            document.getElementById('s3').value = '';
+            document.getElementById('result').textContent = '';
+        }
+        
+            </script>
+            </html>
